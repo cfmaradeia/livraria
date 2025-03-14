@@ -1,0 +1,40 @@
+services:
+  livraria-db:
+    container_name: livraria-db
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: livrariadbpass
+      POSTGRES_USER: user
+      POSTGRES_DB: livraria-db
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d livraria-db"]
+      interval: 20s
+      timeout: 10s
+      retries: 10
+    ports:
+      - "5432:5432"
+    networks:
+      - livraria-net
+
+  livraria-migration:
+    container_name: livraria-migration
+    build:
+      context: .
+      dockerfile: migrations/docker/Dockerfile
+    volumes:
+      - "./migrations/config/:/liquibase/migrations/"
+    environment:
+      LIQUIBASE_COMMAND_URL: jdbc:postgresql://livraria-db:5432/livraria-db
+      LIQUIBASE_COMMAND_USERNAME: user
+      LIQUIBASE_COMMAND_PASSWORD: livrariadbpass
+      MIGRATION_COMMAND: update
+    depends_on:
+      crud-go-db:
+        condition: service_healthy
+    networks:
+      - livraria-net
+
+networks:
+  livraria-net:
+    driver: bridge
