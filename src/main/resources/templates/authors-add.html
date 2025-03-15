@@ -15,7 +15,7 @@
     <header th:replace="fragments/header :: header"></header>
     <main class="container">
         <div class="row">
-            <section class="col-sm-6">
+            <section class="col-6">
                 <h2>Criar novo autor</h2>
                 <form action="#" th:action="@{/author/add}" th:object="${author}" method="post" class="row">
                     <div class="col-12">
@@ -28,7 +28,7 @@
                     </div>
                 </form>
             </section>
-            <section class="col-sm-6">
+            <section class="col-6">
                 <h2>Autores</h2>
                 <ul class="list-group list-group-flush" th:each="author : ${authors}">
                     <li class="list-group-item" th:text="${author.name}"></li>

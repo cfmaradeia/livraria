@@ -24,6 +24,10 @@ main.container {
     justify-content: space-evenly;
 }
 
+main.container .row{
+    width: 100%;
+}
+
 main.container .card {
     text-align: center;
     max-width: 15rem;    
