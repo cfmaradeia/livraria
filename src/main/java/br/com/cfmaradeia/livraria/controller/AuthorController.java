@@ -1,8 +1,8 @@
 package br.com.cfmaradeia.livraria.controller;
 
 import br.com.cfmaradeia.livraria.dto.AuthorRequestDTO;
-import br.com.cfmaradeia.livraria.service.author.AddAuthorUseCase;
-import br.com.cfmaradeia.livraria.service.author.ListAuthorUseCase;
+import br.com.cfmaradeia.livraria.useCase.author.AddAuthorUseCase;
+import br.com.cfmaradeia.livraria.useCase.author.ListAuthorUseCase;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -11,8 +11,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
 
 @Slf4j
 @Controller
@@ -44,8 +42,7 @@ public class AuthorController {
         }
 
         addAuthorUseCase.createAuthorFromDTO(authorRequestDTO);
-        model.addAttribute("author", new AuthorRequestDTO(null));
-        return "authors-add";
+        return "redirect:new";
     }
 
 }

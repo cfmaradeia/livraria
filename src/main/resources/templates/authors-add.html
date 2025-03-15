@@ -12,15 +12,7 @@
     <title>Livraria : Author</title>
 </head>
 <body>
-    <header class="container">
-        <h1>Livraria</h1>
-
-        <nav>
-            <a href="/book/new">Novo Livro</a>
-            <a href="/author/new">Novo Autor</a>
-            <a href="/subject/new">Novo Assunto</a>
-        </nav>
-    </header>
+    <header th:replace="fragments/header :: header"></header>
     <main class="container">
         <div class="row">
             <section class="col-sm-6">
@@ -38,26 +30,13 @@
             </section>
             <section class="col-sm-6">
                 <h2>Autores</h2>
-
                 <ul class="list-group list-group-flush" th:each="author : ${authors}">
                     <li class="list-group-item" th:text="${author.name}"></li>
                 </ul>
             </section>
         </div>
     </main>
-    <footer class="container">
-        Desenvolvido por Carlos Felipe - 2025
-    </footer>
-<!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-
-<!--
-<h1>Criar novo autor</h1>
-
-
-
-
--->
+    <footer th:replace="fragments/footer :: footer"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 </html>

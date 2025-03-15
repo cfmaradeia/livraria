@@ -1,4 +1,4 @@
-package br.com.cfmaradeia.livraria.service.author;
+package br.com.cfmaradeia.livraria.useCase.author;
 
 import br.com.cfmaradeia.livraria.dto.AuthorResponseDTO;
 import br.com.cfmaradeia.livraria.repository.AuthorRepository;
