@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="../css/main.css" rel="stylesheet">
+
+    <title>Livraria : Author</title>
+</head>
+<body>
+    <header class="container">
+        <h1>Livraria</h1>
+
+        <nav>
+            <a href="/book/new">Novo Livro</a>
+            <a href="/author/new">Novo Autor</a>
+            <a href="/subject/new">Novo Assunto</a>
+        </nav>
+    </header>
+    <main class="container">
+        <div class="row">
+            <section class="col-sm-6">
+                <h2>Criar novo autor</h2>
+                <form action="#" th:action="@{/author/add}" th:object="${author}" method="post" class="row">
+                    <div class="col-12">
+                        <label for="name" class="form-label">Nome</label>
+                        <input type="text" th:field="*{name}" id="name" placeholder="Nome do author" class="form-control">
+                        <span class="form-text" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                    </div>
+                    <div class="col-12">
+                        <input type="submit" value="Criar novo autor" class="btn btn-primary">
+                    </div>
+                </form>
+            </section>
+            <section class="col-sm-6">
+                <h2>Autores</h2>
+
+                <ul class="list-group list-group-flush" th:each="author : ${authors}">
+                    <li class="list-group-item" th:text="${author.name}"></li>
+                </ul>
+            </section>
+        </div>
+    </main>
+    <footer class="container">
+        Desenvolvido por Carlos Felipe - 2025
+    </footer>
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+
+<!--
+<h1>Criar novo autor</h1>
+
+
+
+
+-->
+</body>
+</html>
