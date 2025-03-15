@@ -30,7 +30,7 @@ services:
       LIQUIBASE_COMMAND_PASSWORD: livrariadbpass
       MIGRATION_COMMAND: update
     depends_on:
-      crud-go-db:
+      livraria-db:
         condition: service_healthy
     networks:
       - livraria-net

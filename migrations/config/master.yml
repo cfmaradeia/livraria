@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: cfmaradeia
+      changes:
+        - sqlFile:
+            stripComments: true
+            path: migrations/changelogs/1-create-tables.sql
+      rollback:
+        - sqlFile:
+            stripComments: true
+            path: migrations/changelogs/1-create-tables-rollback.sql
