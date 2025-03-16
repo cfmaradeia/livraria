@@ -18,18 +18,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SubjectController {
 
     private final AddSubjectUseCase addSubjectUseCase;
-    private final ListSubjectUseCase listubjectUseCase;
+    private final ListSubjectUseCase listSubjectUseCase;
 
-    public SubjectController(AddSubjectUseCase addSubjectUseCase, ListSubjectUseCase listubjectUseCase) {
+    public SubjectController(AddSubjectUseCase addSubjectUseCase, ListSubjectUseCase listSubjectUseCase) {
         this.addSubjectUseCase = addSubjectUseCase;
-        this.listubjectUseCase = listubjectUseCase;
+        this.listSubjectUseCase = listSubjectUseCase;
     }
 
     @GetMapping("/new")
     public String newSubject(SubjectRequestDTO subjectRequestDTO, Model model){
 
         log.info("Create new subject");
-        model.addAttribute("subjects", listubjectUseCase.findAll());
+        model.addAttribute("subjects", listSubjectUseCase.findAll());
         model.addAttribute("subject", subjectRequestDTO);
         return "subjects-add";
     }

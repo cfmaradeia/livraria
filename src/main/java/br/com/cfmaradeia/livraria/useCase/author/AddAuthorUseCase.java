@@ -4,6 +4,7 @@ import br.com.cfmaradeia.livraria.dto.AuthorRequestDTO;
 import br.com.cfmaradeia.livraria.dto.AuthorResponseDTO;
 import br.com.cfmaradeia.livraria.model.Author;
 import br.com.cfmaradeia.livraria.repository.AuthorRepository;
+import br.com.cfmaradeia.livraria.useCase.subject.ListSubjectUseCase;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ public class AddAuthorUseCase {
 
     private final AuthorMapper authorMapper;
     private final AuthorRepository authorRepository;
+
 
     public AddAuthorUseCase(AuthorMapper authorMapper, AuthorRepository authorRepository) {
         this.authorMapper = authorMapper;

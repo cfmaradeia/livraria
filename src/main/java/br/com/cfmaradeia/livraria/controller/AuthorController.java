@@ -34,10 +34,12 @@ public class AuthorController {
     }
 
     @PostMapping("/add")
-    public String addAuthor(@Valid AuthorRequestDTO authorRequestDTO, BindingResult result){
+    public String addAuthor(@Valid AuthorRequestDTO authorRequestDTO, BindingResult result, Model model){
         log.info("Creating new author from {}", authorRequestDTO);
         if(result.hasErrors()){
             log.error("Author cannot be inserted. Has errors");
+            model.addAttribute("authors", listAuthorUseCase.findAll());
+            model.addAttribute("author", authorRequestDTO);
             return "authors-add";
         }
 
