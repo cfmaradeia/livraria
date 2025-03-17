@@ -1,6 +1,6 @@
-# livraria
+# Livraria
 
-## Descrição
+## Requisitos
 Deve ser feito CRUD para Livro, Autor e Assunto conforme o modelo de dados.
 A tela inicial pode ter um menu simples ou mesmo links direto para as telas
 construídas.
@@ -30,9 +30,19 @@ livro.
 Guarde todos os scripts e instruções para implantação de seu projeto, eles devem ser demonstrados na apresentação.
 
 ## Execução do projeto
+Executar o comando para iniciar o container com banco de dados
+> docker-compose up -d
 
-## Projetos 
+Para iniciar a aplicação 
+> ./gradlew bootRun
+
+Para acessar o site 
+> http://localhost:8080/
+
+
+## Projetos desenvolvido com: 
 -> Java 17 com spring boot 3
+
 -> Gradle
--> 
+
 -> Postgres

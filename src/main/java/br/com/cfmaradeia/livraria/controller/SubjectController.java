@@ -27,17 +27,16 @@ public class SubjectController {
 
     @GetMapping("/new")
     public String newSubject(SubjectRequestDTO subjectRequestDTO, Model model){
-
         log.info("Create new subject");
-        model.addAttribute("subjects", listSubjectUseCase.findAll());
-        model.addAttribute("subject", subjectRequestDTO);
+        model.addAttribute("allSubjects", listSubjectUseCase.findAll());
         return "subjects-add";
     }
 
     @PostMapping("/add")
-    public String addSubject(@Valid SubjectRequestDTO subjectRequestDTO, BindingResult result){
+    public String addSubject(@Valid SubjectRequestDTO subjectRequestDTO, BindingResult result, Model model){
         log.info("Creating new subject from {}", subjectRequestDTO);
         if(result.hasErrors()){
+            model.addAttribute("allSubjects", listSubjectUseCase.findAll());
             log.error("Subject cannot be inserted. Has errors");
             return "subjects-add";
         }

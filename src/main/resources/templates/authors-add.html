@@ -21,7 +21,7 @@
                     <div class="col-12">
                         <label for="name" class="form-label">Nome</label>
                         <input type="text" th:field="*{name}" id="name" placeholder="Nome do author" maxlength="40" class="form-control">
-                        <span class="form-text" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+                        <span class="form-text error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
                     </div>
                     <div class="col-12">
                         <input type="submit" value="Criar novo autor" class="btn btn-primary">

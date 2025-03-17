@@ -17,11 +17,11 @@
     <div class="row">
         <section class="col-6">
             <h2>Criar novo assunto</h2>
-            <form action="#" th:action="@{/subject/add}" th:object="${subject}" method="post" class="row">
+            <form action="#" th:action="@{/subject/add}" th:object="${subjectRequestDTO}" method="post" class="row">
                 <div class="col-12">
                     <label for="description" class="form-label">Descrição</label>
-                    <input type="text" th:field="*{description}" id="description" placeholder="Descrição do assunto" class="form-control">
-                    <span class="form-text" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
+                    <input type="text" th:field="*{description}" id="description" placeholder="Descrição do assunto" maxlength="20" class="form-control">
+                    <span class="form-text error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></span>
                 </div>
                 <div class="col-12">
                     <input type="submit" value="Criar novo assunto" class="btn btn-primary">
@@ -30,7 +30,7 @@
         </section>
         <section class="col-6">
             <h2>Assuntos</h2>
-            <ul class="list-group list-group-flush" th:each="subject : ${subjects}">
+            <ul class="list-group list-group-flush" th:each="subject : ${allSubjects}">
                 <li class="list-group-item" th:text="${subject.description}"></li>
             </ul>
         </section>
