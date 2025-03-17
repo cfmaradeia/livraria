@@ -39,7 +39,6 @@ public class AuthorController {
         if(result.hasErrors()){
             log.error("Author cannot be inserted. Has errors");
             model.addAttribute("authors", listAuthorUseCase.findAll());
-            model.addAttribute("author", authorRequestDTO);
             return "authors-add";
         }
 

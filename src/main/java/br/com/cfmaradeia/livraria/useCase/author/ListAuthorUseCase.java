@@ -2,12 +2,12 @@ package br.com.cfmaradeia.livraria.useCase.author;
 
 import br.com.cfmaradeia.livraria.dto.AuthorResponseDTO;
 import br.com.cfmaradeia.livraria.model.Author;
+import br.com.cfmaradeia.livraria.model.Subject;
 import br.com.cfmaradeia.livraria.repository.AuthorRepository;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 

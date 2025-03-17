@@ -1,9 +1,12 @@
 package br.com.cfmaradeia.livraria.useCase.subject;
 
 import br.com.cfmaradeia.livraria.dto.SubjectResponseDTO;
+import br.com.cfmaradeia.livraria.model.Subject;
 import br.com.cfmaradeia.livraria.repository.SubjectRepository;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -25,4 +28,7 @@ public class ListSubjectUseCase {
             .collect(Collectors.toSet());
     }
 
+    public Set<Subject> findAllById(@NotNull Set<Integer> subjects) {
+        return new HashSet<>(subjectRepository.findAllById(subjects));
+    }
 }

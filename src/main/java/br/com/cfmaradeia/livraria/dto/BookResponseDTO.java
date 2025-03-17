@@ -8,6 +8,7 @@ public record BookResponseDTO(
     String editor,
     Integer edition,
     String publicationYear,
-    Set<Integer> authors
+    Set<Integer> authors,
+    Set<Integer> subjects
 ) {
 }

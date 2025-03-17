@@ -15,27 +15,32 @@ import java.util.Optional;
 
 @Slf4j
 @Service
-public class AddBookUseCase {
+public class UpdateBookUseCase {
 
     private final BookRepository bookRepository;
     private final BookMapper bookMapper;
     private final ListAuthorUseCase listAuthorUseCase;
     private final ListSubjectUseCase listSubjectUseCase;
 
-    public AddBookUseCase(BookRepository bookRepository, BookMapper bookMapper, ListAuthorUseCase listAuthorUseCase, ListSubjectUseCase listSubjectUseCase) {
+    public UpdateBookUseCase(BookRepository bookRepository, BookMapper bookMapper, ListAuthorUseCase listAuthorUseCase, ListSubjectUseCase listSubjectUseCase) {
         this.bookRepository = bookRepository;
         this.bookMapper = bookMapper;
         this.listAuthorUseCase = listAuthorUseCase;
         this.listSubjectUseCase = listSubjectUseCase;
     }
 
-    public BookResponseDTO createBookFromDTO(BookRequestDTO bookRequestDTO){
-        log.info("Creating book from BookRequestDTO: {}", bookRequestDTO);
+    public BookResponseDTO updateBookFromDTO(@Valid BookRequestDTO bookRequestDTO, Integer id) {
+        log.info("Updating book from BookRequestDTO: {}", bookRequestDTO);
+
+        Optional<Book> optionalBook = bookRepository.findById(id);
+
+        if(optionalBook.isEmpty()){
+            throw new BookNotFoundException();
+        }
 
         Book book = bookMapper.bookFromRequestDTO(bookRequestDTO, listAuthorUseCase.findAllById(bookRequestDTO.authors()), listSubjectUseCase.findAllById(bookRequestDTO.subjects()));
+        book.setId(optionalBook.get().getId());
 
         return bookMapper.responseDTOFromModel(bookRepository.save(book));
     }
-
-
 }

@@ -9,6 +9,13 @@ h1 a{
     text-decoration: none;
     color: #212529;
 }
+.error{
+    color: #89002B;
+}
+
+input:invalid {
+  border: 2px dashed red;
+}
 
 header.container {
     margin-top: 50px;
@@ -17,7 +24,8 @@ header.container {
 main.container {
     margin-top: 30px; 
     background-color: #EFEFEF;
-    border-radius: 12px;   
+    border-radius: 12px;  
+    border: 1px solid #2B2D30; 
     padding: 25px;
     display: flex;
     flex-direction: row;
@@ -47,13 +55,23 @@ main.container section{
 
 main.container section h2 {
     margin-bottom: 18px;
+}
 
+main.container section .list-group{
+    border-radius: 12px; 
+    border: 1px solid #AAB1BD; 
 }
 
 main.container section form .btn{
     margin: 10px 0;    
 }
 
+main.container section .btn-danger{
+    padding: 2px 4px;
+    font-size: 16px;
+    font-weight: bolder;
+    margin-right: 20px;
+}
 
 footer.container {
     margin-top: 30px;

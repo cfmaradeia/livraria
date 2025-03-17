@@ -24,7 +24,12 @@ public record  BookRequestDTO(
     @Size(min = 4, max = 4)
     String publicationYear,
 
+    @NotEmpty
     @NotNull
-    Set<Integer> authors
+    Set<Integer> authors,
+
+    @NotEmpty
+    @NotNull
+    Set<Integer> subjects
 ) {
 }

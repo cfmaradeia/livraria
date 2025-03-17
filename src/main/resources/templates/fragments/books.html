@@ -1,0 +1,8 @@
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<section class="col-sm-6">
+<h2>Livros</h2>
+<ul class="list-group list-group-flush" th:each="book : ${books}">
+    <a th:href="@{/book/edit/{id}(id=${book.id})}"><li class="list-group-item" th:text="${book.title}"></li></a>
+</ul>
+</section>

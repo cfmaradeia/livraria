@@ -50,6 +50,6 @@ public class Book {
     @JoinTable(name = "livros_assuntos",
             joinColumns = @JoinColumn(name = "cod_livro"),
             inverseJoinColumns = @JoinColumn(name = "cod_assunto"))
-    private Set<Author> subjects;
+    private Set<Subject> subjects;
 
 }
