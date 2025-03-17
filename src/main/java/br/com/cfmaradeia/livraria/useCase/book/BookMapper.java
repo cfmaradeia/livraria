@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class BookMapper {
@@ -30,6 +31,13 @@ public class BookMapper {
     }
 
     public BookResponseDTO responseDTOFromModel(Book book) {
-        return mapper.convertValue(book, BookResponseDTO.class);
+        return new BookResponseDTO(
+            book.getId(),
+            book.getTitle(),
+            book.getEditor(),
+            book.getEdition(),
+            book.getPublicationYear(),
+            book.getAuthors().stream().map(Author::getId).collect(Collectors.toSet())
+        );
     }
 }

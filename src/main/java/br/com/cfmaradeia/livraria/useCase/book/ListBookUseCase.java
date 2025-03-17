@@ -1,6 +1,7 @@
 package br.com.cfmaradeia.livraria.useCase.book;
 
 import br.com.cfmaradeia.livraria.dto.BookResponseDTO;
+import br.com.cfmaradeia.livraria.exception.BookNotFoundException;
 import br.com.cfmaradeia.livraria.repository.BookRepository;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,10 @@ public class ListBookUseCase {
             .stream()
             .map(bookMapper::responseDTOFromModel)
             .collect(Collectors.toSet());
+    }
+
+    public BookResponseDTO findById(Integer id) {
+        return bookRepository.findById(id)
+            .map(bookMapper::responseDTOFromModel).orElseThrow(BookNotFoundException::new);
     }
 }

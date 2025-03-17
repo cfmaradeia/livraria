@@ -2,6 +2,7 @@ package br.com.cfmaradeia.livraria.controller;
 
 
 import br.com.cfmaradeia.livraria.dto.BookRequestDTO;
+import br.com.cfmaradeia.livraria.dto.BookResponseDTO;
 import br.com.cfmaradeia.livraria.dto.SubjectRequestDTO;
 import br.com.cfmaradeia.livraria.useCase.author.ListAuthorUseCase;
 import br.com.cfmaradeia.livraria.useCase.book.AddBookUseCase;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -55,6 +57,23 @@ public class BookController {
         }
 
         addBookUseCase.createBookFromDTO(bookRequestDTO);
+        return "redirect:new";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editBook(@PathVariable("id") long id, Model model){
+        log.info("Open to edit book from {}", id);
+        BookResponseDTO bookResponseDTO = listBookUseCase.findById((int) id);
+
+        model.addAttribute("allAuthors", listAuthorUseCase.findAll());
+        model.addAttribute("books", listBookUseCase.findAll());
+        model.addAttribute("book", bookResponseDTO);
+        return "books-edit";
+    }
+
+    @PostMapping("/update/{id}")
+    public String updateBook(@Valid BookRequestDTO bookRequestDTO, BindingResult result, Model model){
+        log.info("Update book from {}", bookRequestDTO);
         return "redirect:new";
     }
 }
