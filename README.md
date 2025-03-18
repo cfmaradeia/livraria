@@ -32,6 +32,7 @@ Guarde todos os scripts e instruções para implantação de seu projeto, eles d
 ## Execução do projeto
 Executar o comando para iniciar o container com banco de dados
 > docker-compose up -d
+> docker-compose run --rm -e MIGRATION_COMMAND=update livraria-migration
 
 Para iniciar a aplicação 
 > ./gradlew bootRun

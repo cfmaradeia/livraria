@@ -2,16 +2,12 @@ package br.com.cfmaradeia.livraria.useCase.book;
 
 import br.com.cfmaradeia.livraria.dto.BookRequestDTO;
 import br.com.cfmaradeia.livraria.dto.BookResponseDTO;
-import br.com.cfmaradeia.livraria.exception.BookNotFoundException;
 import br.com.cfmaradeia.livraria.model.Book;
 import br.com.cfmaradeia.livraria.repository.BookRepository;
 import br.com.cfmaradeia.livraria.useCase.author.ListAuthorUseCase;
 import br.com.cfmaradeia.livraria.useCase.subject.ListSubjectUseCase;
-import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Slf4j
 @Service

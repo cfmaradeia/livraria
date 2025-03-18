@@ -28,7 +28,7 @@ class AddAuthorUseCaseTest {
     private AddAuthorUseCase addAuthorUseCase;
 
     @Test
-    void shouldReturnAuthorDTOSuccessfully() {
+    void shouldReturnAuthorDTO_OK() {
         AuthorRequestDTO authorRequestDTO = new AuthorRequestDTO("Test name");
         var author = new Author(1, authorRequestDTO.name());
         AuthorResponseDTO authorResponseDTO = new AuthorResponseDTO(author.getId(), author.getName());
